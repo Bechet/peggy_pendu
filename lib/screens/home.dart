@@ -20,7 +20,6 @@ class Home extends StatelessWidget {
               child: MaterialButton(
                 child: Text("Play !"),
                 onPressed: (() {
-                  print("play button pressed...");
                   Navigator.pushNamed(context, Constant.pathListLevelScreen);
                 }),
               ),
@@ -29,7 +28,6 @@ class Home extends StatelessWidget {
               child: MaterialButton(
                 child: Text("Option"),
                 onPressed: (() {
-                  print("Option button pressed...");
                   Navigator.pushNamed(context, Constant.pathOptionScreen);
                 }),
               ),
@@ -38,7 +36,6 @@ class Home extends StatelessWidget {
               child: MaterialButton(
                 child: Text("Credit"),
                 onPressed: (() {
-                  print("Credit button pressed...");
                   Navigator.pushNamed(context, Constant.pathCreditScreen);
                 }),
               ),

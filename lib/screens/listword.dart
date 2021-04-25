@@ -21,7 +21,7 @@ class _ListWordState extends State<ListWord> {
         japaneseWord: "テスト",
         hint1: "Animal"),
     new PenduBean(
-        frenchWord: "cuillère",
+        frenchWord: "Cuillère",
         frenchDefinition: "This is the definition of the 'another' word",
         japaneseWord: "テスト2",
         hint1: "Arthur ! Arthur !!"),
