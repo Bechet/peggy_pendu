@@ -56,7 +56,11 @@ class _ListWordState extends State<ListWord> {
                   title: Text(StringUtils.replaceWordWithUnderscoreWithException(
                       penduBean.frenchWord, Constant.LIST_DEFAULT_WORD_EXCEPTION, Constant.LIST_DEFAULT_CHARACTER_EXCEPTION)),
                   subtitle: Text(penduBean.hint1),
-                  onTap: (() => {print(penduBean.frenchWord)}),
+                  onTap: (() => {
+                    Navigator.pushNamed(context, Constant.pathGameScreen, arguments: {
+                      Constant.PARAM_KEY_PENDU_BEAN: penduBean
+                    })
+                  }),
                 ))
             .toList(),
       ),

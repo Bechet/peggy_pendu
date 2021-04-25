@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:peggy_pendu/screens/credit.dart';
+import 'package:peggy_pendu/screens/game.dart';
 import 'package:peggy_pendu/screens/home.dart';
 import 'package:peggy_pendu/screens/listlevel.dart';
 import 'package:peggy_pendu/screens/listword.dart';
@@ -26,6 +27,7 @@ class _MainWidgetState extends State<MainWidget> {
         Constant.pathOptionScreen: (context) => Option(),
         Constant.pathCreditScreen: (context) => Credit(),
         Constant.pathListWordScreen: (context) => ListWord(),
+        Constant.pathGameScreen: (context) => Game(),
       },
     );
   }

@@ -1,3 +1,4 @@
+import 'package:diacritic/diacritic.dart';
 import 'package:peggy_pendu/utils/Constant.dart';
 
 class StringUtils {
@@ -6,7 +7,7 @@ class StringUtils {
     String resultString = "";
     if (s != null) {
       for (int indexChar = 0; indexChar<s.length; indexChar++) {
-        if (listCharException.contains(s[indexChar])) {
+        if (listCharException.contains(uppercaseAndReplaceWithAlphabetical(s[indexChar]))) {
           resultString += s[indexChar];
         } else {
           resultString += Constant.UNDERSCORE;
@@ -23,5 +24,11 @@ class StringUtils {
     }
     return replaceWordWithUnderscore(s, listCharException);
   }
+
+  static String uppercaseAndReplaceWithAlphabetical(String word) {
+    return removeDiacritics(word).toUpperCase();
+  }
+
+
 
 }
