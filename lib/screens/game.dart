@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:peggy_pendu/beans/penduBean.dart';
 import 'package:peggy_pendu/utils/Constant.dart';
@@ -16,11 +18,11 @@ class _GameState extends State<Game> {
   int chance = 6;
 
   void _textInputHandler(String text) {
-    print(text);
     if (!listKey.contains(text)) {
       setState(() {
         listKey.add(text);
         chance = PenduUtils.calculateRemainingChance(penduBean.frenchWord, listKey);
+        checkEnd();
       });
     }
   }
@@ -106,6 +108,73 @@ class _GameState extends State<Game> {
           ],
         ),
       ),
+    );
+  }
+
+  void checkEnd() {
+    if (StringUtils.replaceWordWithUnderscoreWithException(
+        penduBean.frenchWord,
+        Constant.LIST_DEFAULT_WORD_EXCEPTION,
+        listKey).replaceAll(Constant.SPACE, "") == penduBean.frenchWord) {
+      print("ok");
+      _showWinDialog();
+    } else if (this.chance == 0) {
+      _showLoseDialog();
+    }
+  }
+
+  Future<void> _showWinDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(penduBean.frenchWord),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(penduBean.frenchDefinition),
+                Text("日本語: " + penduBean.japaneseWord),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            MaterialButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.popUntil(context, ModalRoute.withName(Constant.pathListWordScreen));
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _showLoseDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("You Lose... "),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text("馬鹿め…(*'▽') "),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            MaterialButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.popUntil(context, ModalRoute.withName(Constant.pathListWordScreen));
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
