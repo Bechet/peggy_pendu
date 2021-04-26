@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:peggy_pendu/beans/penduBean.dart';
 import 'package:peggy_pendu/utils/Constant.dart';
 import 'package:peggy_pendu/utils/StringUtils.dart';
+import 'package:peggy_pendu/utils/randomUtils.dart';
 
 class ListWord extends StatefulWidget {
   @override
@@ -57,13 +58,18 @@ class _ListWordState extends State<ListWord> {
                       penduBean.frenchWord, Constant.LIST_DEFAULT_WORD_EXCEPTION, Constant.LIST_DEFAULT_CHARACTER_EXCEPTION)),
                   subtitle: Text(penduBean.hint1),
                   onTap: (() => {
-                    Navigator.pushNamed(context, Constant.pathGameScreen, arguments: {
-                      Constant.PARAM_KEY_PENDU_BEAN: penduBean
-                    })
+                    onWordPush(penduBean)
                   }),
                 ))
             .toList(),
       ),
     );
+  }
+
+  onWordPush(PenduBean penduBean) {
+    PenduBean paramPenduBean = penduBean.frenchWord == Constant.RANDOM ? listPenduBean[RandomUtils.randomIntMinMax(0, listPenduBean.length)] : penduBean;
+    Navigator.pushNamed(context, Constant.pathGameScreen, arguments: {
+      Constant.PARAM_KEY_PENDU_BEAN: paramPenduBean
+    });
   }
 }
