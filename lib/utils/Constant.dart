@@ -7,6 +7,7 @@ class Constant {
   static const pathCreditScreen='/credit';
   static const pathListWordScreen='/listWord';
   static const pathGameScreen='/game';
+  static const pathTestScreen='/test';
 
   static const comingSoon="Coming Soon :)";
 
@@ -22,9 +23,8 @@ class Constant {
   static const List<String> LIST_DEFAULT_CHARACTER_EXCEPTION = [Constant.APOSTROPHE, Constant.SPACE];
   static const List<String> LIST_DEFAULT_WORD_EXCEPTION = [Constant.RANDOM];
 
-
   static const PARAM_KEY_PENDU_BEAN = 'penduBean';
   static const int MAX_CHANCE = 6;
 
-
+  static const PATH_WORDS_CSV_FILE = 'assets/words.csv';
 }

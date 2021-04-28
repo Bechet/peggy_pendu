@@ -15,32 +15,32 @@ class _ListWordState extends State<ListWord> {
         frenchWord: Constant.RANDOM,
         frenchDefinition: "This is the definition of the word",
         japaneseWord: "テスト",
-        hint1: "random"),
+        category1: "random"),
     new PenduBean(
         frenchWord: "chat",
         frenchDefinition: "This is the definition of the word",
         japaneseWord: "テスト",
-        hint1: "Animal"),
+        category1: "Animal"),
     new PenduBean(
         frenchWord: "Cuillère",
         frenchDefinition: "This is the definition of the 'another' word",
         japaneseWord: "テスト2",
-        hint1: "Arthur ! Arthur !!"),
+        category1: "Arthur ! Arthur !!"),
     new PenduBean(
         frenchWord: "terme avec espace",
         frenchDefinition: "This is the definition of the word",
         japaneseWord: "",
-        hint1: "Terme avec espace"),
+        category1: "Terme avec espace"),
     new PenduBean(
         frenchWord: "terme'avec'apostrophes",
         frenchDefinition: "This is the definition of the composed word",
         japaneseWord: "テスト テスト ",
-        hint1: "terme'avec'apostrophes"),
+        category1: "terme'avec'apostrophes"),
     new PenduBean(
         frenchWord: "çàéïè",
         frenchDefinition: "This is the definition of the composed word",
         japaneseWord: "テスト テスト ",
-        hint1: "çàéïè"),
+        category1: "çàéïè"),
   ];
 
   @override
@@ -56,7 +56,7 @@ class _ListWordState extends State<ListWord> {
             .map((penduBean) => ListTile(
                   title: Text(StringUtils.replaceWordWithUnderscoreWithException(
                       penduBean.frenchWord, Constant.LIST_DEFAULT_WORD_EXCEPTION, Constant.LIST_DEFAULT_CHARACTER_EXCEPTION)),
-                  subtitle: Text(penduBean.hint1),
+                  subtitle: Text(penduBean.category1),
                   onTap: (() => {
                     onWordPush(penduBean)
                   }),

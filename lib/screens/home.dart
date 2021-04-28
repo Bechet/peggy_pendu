@@ -40,6 +40,14 @@ class Home extends StatelessWidget {
                 }),
               ),
             ),
+            Container(
+              child: MaterialButton(
+                child: Text("Test"),
+                onPressed: (() {
+                  Navigator.pushNamed(context, Constant.pathTestScreen);
+                }),
+              ),
+            ),
           ],
         ),
       ),

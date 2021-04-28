@@ -68,7 +68,7 @@ class _GameState extends State<Game> {
           children: <Widget>[
             // Hint
             Container(
-              child: Text("Hint: " +penduBean.hint1),
+              child: Text("Hint: " +penduBean.category1),
             ),
             // Image & Letters
             Container(

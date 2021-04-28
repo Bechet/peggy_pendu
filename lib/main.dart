@@ -5,6 +5,7 @@ import 'package:peggy_pendu/screens/home.dart';
 import 'package:peggy_pendu/screens/listlevel.dart';
 import 'package:peggy_pendu/screens/listword.dart';
 import 'package:peggy_pendu/screens/option.dart';
+import 'package:peggy_pendu/screens/test.dart';
 import 'package:peggy_pendu/utils/Constant.dart';
 
 void main() {
@@ -28,6 +29,7 @@ class _MainWidgetState extends State<MainWidget> {
         Constant.pathCreditScreen: (context) => Credit(),
         Constant.pathListWordScreen: (context) => ListWord(),
         Constant.pathGameScreen: (context) => Game(),
+        Constant.pathTestScreen: (context) => Test(),
       },
     );
   }
