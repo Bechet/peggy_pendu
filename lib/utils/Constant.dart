@@ -16,6 +16,8 @@ class Constant {
   static const UNDERSCORE = "_";
   static const SPACE=" ";
   static const APOSTROPHE="'";
+  static const String CVS_SPLITTER = ';';
+  static const String LINE_BREAK = '\n';
 
   static const List<String> LIST_KEYBOARD_A_TO_M=["A","B","C","D","E","F","G","H","I","J","K","L","M"];
   static const List<String> LIST_KEYBOARD_N_TO_Z=["N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];

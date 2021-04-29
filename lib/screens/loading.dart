@@ -5,6 +5,4 @@ class Loading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container();
   }
-
-
 }

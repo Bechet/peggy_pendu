@@ -8,8 +8,7 @@ class Credit extends StatelessWidget {
       appBar: AppBar(
         title: Text("Credit"),
       ),
-      body:
-      Center(
+      body: Center(
         child: Text(Constant.comingSoon),
       ),
     );

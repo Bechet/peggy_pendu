@@ -8,8 +8,7 @@ class Option extends StatelessWidget {
       appBar: AppBar(
         title: Text("Option"),
       ),
-      body:
-      Center(
+      body: Center(
         child: Text(Constant.comingSoon),
       ),
     );

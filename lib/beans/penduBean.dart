@@ -7,7 +7,14 @@ class PenduBean {
   String frenchDefinition;
   String japaneseWord;
 
-  PenduBean({this.article, this.frenchWord, this.level, this.category1, this.category2, this.frenchDefinition, this.japaneseWord});
+  PenduBean(
+      {this.article,
+      this.frenchWord,
+      this.level,
+      this.category1,
+      this.category2,
+      this.frenchDefinition,
+      this.japaneseWord});
 
   @override
   String toString() {

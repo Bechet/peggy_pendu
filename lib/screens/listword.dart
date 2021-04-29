@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:peggy_pendu/beans/penduBean.dart';
 import 'package:peggy_pendu/utils/Constant.dart';
-import 'package:peggy_pendu/utils/StringUtils.dart';
+import 'package:peggy_pendu/utils/stringUtils.dart';
 import 'package:peggy_pendu/utils/randomUtils.dart';
 
 class ListWord extends StatefulWidget {

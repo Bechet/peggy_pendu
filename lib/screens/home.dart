@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:peggy_pendu/utils/Constant.dart';
 
@@ -11,8 +10,7 @@ class Home extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.red,
       ),
-      body:
-      Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[

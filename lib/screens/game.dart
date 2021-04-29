@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:peggy_pendu/beans/penduBean.dart';
 import 'package:peggy_pendu/utils/Constant.dart';
 import 'package:peggy_pendu/utils/PenduUtils.dart';
-import 'package:peggy_pendu/utils/StringUtils.dart';
+import 'package:peggy_pendu/utils/stringUtils.dart';
 import 'package:peggy_pendu/widgets/TextKey.dart';
 
 class Game extends StatefulWidget {
@@ -21,12 +21,12 @@ class _GameState extends State<Game> {
     if (!listKey.contains(text)) {
       setState(() {
         listKey.add(text);
-        chance = PenduUtils.calculateRemainingChance(penduBean.frenchWord, listKey);
+        chance =
+            PenduUtils.calculateRemainingChance(penduBean.frenchWord, listKey);
         checkEnd();
       });
     }
   }
-
 
   Expanded buildRowOne() {
     return Expanded(
@@ -68,7 +68,7 @@ class _GameState extends State<Game> {
           children: <Widget>[
             // Hint
             Container(
-              child: Text("Hint: " +penduBean.category1),
+              child: Text("Hint: " + penduBean.category1),
             ),
             // Image & Letters
             Container(
@@ -77,9 +77,9 @@ class _GameState extends State<Game> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Container(
-                        // Image
-                      child: Text("Chance: "+chance.toString()),
-                        ),
+                      // Image
+                      child: Text("Chance: " + chance.toString()),
+                    ),
                     Container(
                       // Letters
                       child: Text(
@@ -112,10 +112,10 @@ class _GameState extends State<Game> {
   }
 
   void checkEnd() {
-    if (StringUtils.replaceWordWithUnderscoreWithException(
-        penduBean.frenchWord,
-        Constant.LIST_DEFAULT_WORD_EXCEPTION,
-        listKey).replaceAll(Constant.SPACE, "") == penduBean.frenchWord) {
+    if (StringUtils.replaceWordWithUnderscoreWithException(penduBean.frenchWord,
+                Constant.LIST_DEFAULT_WORD_EXCEPTION, listKey)
+            .replaceAll(Constant.SPACE, "") ==
+        penduBean.frenchWord) {
       print("ok");
       _showWinDialog();
     } else if (this.chance == 0) {
@@ -142,7 +142,8 @@ class _GameState extends State<Game> {
             MaterialButton(
               child: Text('OK'),
               onPressed: () {
-                Navigator.popUntil(context, ModalRoute.withName(Constant.pathListWordScreen));
+                Navigator.popUntil(
+                    context, ModalRoute.withName(Constant.pathListWordScreen));
               },
             ),
           ],
@@ -169,7 +170,8 @@ class _GameState extends State<Game> {
             MaterialButton(
               child: Text('OK'),
               onPressed: () {
-                Navigator.popUntil(context, ModalRoute.withName(Constant.pathListWordScreen));
+                Navigator.popUntil(
+                    context, ModalRoute.withName(Constant.pathListWordScreen));
               },
             ),
           ],
