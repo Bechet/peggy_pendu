@@ -115,7 +115,7 @@ class _GameState extends State<Game> {
     if (StringUtils.replaceWordWithUnderscoreWithException(penduBean.frenchWord,
                 Constant.LIST_DEFAULT_WORD_EXCEPTION, listKey)
             .replaceAll(Constant.SPACE, "") ==
-        penduBean.frenchWord) {
+        penduBean.frenchWord.replaceAll(Constant.SPACE, "")) {
       print("ok");
       _showWinDialog();
     } else if (this.chance == 0) {

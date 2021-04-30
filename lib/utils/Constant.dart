@@ -8,6 +8,8 @@ class Constant {
   static const pathListWordScreen='/listWord';
   static const pathGameScreen='/game';
   static const pathTestScreen='/test';
+  static const pathLoadingScreen='/loading';
+  static const pathLoadingTestScreen='/loadingTest';
 
   static const comingSoon="Coming Soon :)";
 
@@ -27,6 +29,7 @@ class Constant {
 
   static const PARAM_KEY_PENDU_BEAN = 'penduBean';
   static const int MAX_CHANCE = 6;
+  static const int DEFAULT_CLEAR_TIME = 0;
 
   static const PATH_WORDS_CSV_FILE = 'assets/words.csv';
 }
