@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'file:///C:/Users/Leo/AndroidStudioProjects/peggy_pendu/lib/utils/managers/csvManager.dart';
 import 'package:peggy_pendu/beans/penduBean.dart';
@@ -14,11 +16,6 @@ class LoadingAlertTest extends StatefulWidget {
 class _LoadingAlertTestState extends State<LoadingAlertTest> {
 
   @override
-  initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -29,8 +26,8 @@ class _LoadingAlertTestState extends State<LoadingAlertTest> {
           child: Column(
             children: <Widget>[
               MaterialButton(
-                onPressed: _onLoadButtonPressed,
                 child: Text("Load"),
+                onPressed: _onLoadButtonPressed
               ),
             ],
           ),
@@ -47,9 +44,15 @@ class _LoadingAlertTestState extends State<LoadingAlertTest> {
   // }
 
   Future<void> _onLoadButtonPressed() async {
-    print("Test _onLoadButtonPressed");
     _showLoseDialog();
-    print("End _onLoadButtonPressed");
+    SaveManager saveManager = SaveManager();
+    final List<SaveDataBean> listSaveDataBean =  await saveManager.loadDataWithSaveFile();
+    Future.delayed(Duration(seconds: Constant.LOADING_SECOND), () {
+      Navigator.pop(context);
+      Navigator.pushNamed(context, Constant.pathListWordScreen, arguments: {
+        Constant.PARAM_KEY_LIST_DATA: listSaveDataBean
+      });
+    });
   }
 
   Future<void> _showLoseDialog() async {
@@ -57,29 +60,9 @@ class _LoadingAlertTestState extends State<LoadingAlertTest> {
       context: context,
       barrierDismissible: true, // user must tap button!
       builder: (BuildContext context) {
-        return Dialog(
-          backgroundColor: Colors.transparent,
-          child: Center(child:
-          Column(
-            children: <Widget>[
-              Text("test"),
-              MaterialButton(
-                  onPressed: () => Navigator.pop(context, "NO"),
-                  child: Text('No')
-
-              ),
-              MaterialButton(
-                  onPressed: () => Navigator.pop(context, "YES"),
-                  child: Text('YES')
-
-              ),
-            ],
-          )),
-        );
+        return Center(child: CircularProgressIndicator(),);
       },
-    ).then((value) => {
-      print(value)
-    });
+    );
   }
 
 

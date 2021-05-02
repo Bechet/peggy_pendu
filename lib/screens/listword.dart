@@ -11,7 +11,7 @@ class ListWord extends StatefulWidget {
 }
 
 class _ListWordState extends State<ListWord> {
-  final List<SaveDataBean> listSaveDataBean = [
+  List<SaveDataBean> listSaveDataBean = [
     SaveDataBean(penduBean: new PenduBean(
         frenchWord: Constant.RANDOM,
         frenchDefinition: "This is the definition of the word",
@@ -46,13 +46,16 @@ class _ListWordState extends State<ListWord> {
 
   @override
   Widget build(BuildContext context) {
+    Map data = ModalRoute.of(context).settings.arguments;
+    listSaveDataBean = data[Constant.PARAM_KEY_LIST_DATA];
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Choose a word"),
         centerTitle: true,
         backgroundColor: Colors.red,
       ),
-      body: Column(
+      body: ListView(
         children: listSaveDataBean
             .map((saveDataBean) => ListTile(
                   title: Text(StringUtils.replaceWordWithUnderscoreWithException(

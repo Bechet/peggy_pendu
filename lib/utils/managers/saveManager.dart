@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:peggy_pendu/beans/penduBean.dart';
 import 'package:peggy_pendu/beans/saveDataBean.dart';
+import 'package:peggy_pendu/utils/managers/csvManager.dart';
 import 'file:///C:/Users/Leo/AndroidStudioProjects/peggy_pendu/lib/utils/saveDataUtils.dart';
 import 'package:peggy_pendu/utils/mappers/penduBeanMapper.dart';
 
@@ -82,5 +83,32 @@ class SaveManager {
     List<String> listData = line.split(Constant.CVS_SPLITTER);
     PenduBean penduBean = PenduBeanMapper.convertListDynamicIntoBean(listData);
     return SaveDataBean(penduBean: penduBean, clearTime: int.parse(listData[listData.length-1]));
+  }
+
+  Future<List<PenduBean>> loadCsv() {
+    print("Loading Csv file...");
+    CsvManager csvManager = CsvManager();
+    return csvManager.convertWordCsvFileAsListPenduBean();
+  }
+
+  Future<List<SaveDataBean>> loadSaveDataFile() {
+    print("Loading saveData file...");
+    SaveManager saveManager = SaveManager();
+    return saveManager.readSaveData();
+  }
+
+  Future<List<SaveDataBean>> loadDataWithSaveFile() async {
+    final List<SaveDataBean> listSaveDataResult = [];
+    final List<PenduBean> listPenduBean = await loadCsv();
+    final List<SaveDataBean> listSaveDataBean = await loadSaveDataFile();
+    for (PenduBean penduBean in listPenduBean) {
+      SaveDataBean sdb = SaveDataUtils.searchFromPenduBean(listSaveDataBean, penduBean);
+      if (sdb != null) {
+        listSaveDataResult.add(sdb);
+      } else {
+        listSaveDataResult.add(SaveDataBean(penduBean: penduBean, clearTime: Constant.DEFAULT_CLEAR_TIME));
+      }
+    }
+    return listSaveDataResult;
   }
 }

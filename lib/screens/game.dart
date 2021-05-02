@@ -101,7 +101,6 @@ class _GameState extends State<Game> {
                 children: [
                   buildRowOne(), // <-- Row
                   buildRowTwo(), // <-- Row
-                  // buildRowThree(),  // <-- Row
                 ],
               ),
             )
@@ -116,7 +115,6 @@ class _GameState extends State<Game> {
                 Constant.LIST_DEFAULT_WORD_EXCEPTION, listKey)
             .replaceAll(Constant.SPACE, "") ==
         penduBean.frenchWord.replaceAll(Constant.SPACE, "")) {
-      print("ok");
       _showWinDialog();
     } else if (this.chance == 0) {
       _showLoseDialog();
@@ -133,7 +131,7 @@ class _GameState extends State<Game> {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(penduBean.frenchDefinition),
+                // Text(penduBean.frenchDefinition),
                 Text("日本語: " + penduBean.japaneseWord),
               ],
             ),
