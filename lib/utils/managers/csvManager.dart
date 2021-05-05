@@ -11,7 +11,6 @@ class CsvManager {
     final rootBundleLoadString = await rootBundle.loadString(Constant.PATH_WORDS_CSV_FILE);
     List<List<dynamic>> rowsAsListOfValues = const CsvToListConverter(eol: Constant.LINE_BREAK, fieldDelimiter: Constant.CVS_SPLITTER).convert(rootBundleLoadString);
     List<PenduBean> listPenduBeans = PenduBeanMapper.convertListListDynamicIntoListBeans(rowsAsListOfValues);
-    print(listPenduBeans);
     return listPenduBeans;
   }
 }

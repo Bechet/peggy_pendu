@@ -19,7 +19,6 @@ class PenduBeanMapper {
     penduBean.category1 = listDynamic[index++];
     penduBean.category2 = listDynamic[index++];
     penduBean.japaneseWord = listDynamic[index++];
-    print(penduBean);
     return penduBean;
   }
 }

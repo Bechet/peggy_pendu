@@ -34,34 +34,14 @@ class _ListLevelState extends State<ListLevel> {
         children: listLevel.map((levelBean) => ListTile(
           title: Text(levelBean.level),
           subtitle: Text(levelBean.description),
-          onTap: _showLoadingPopupAndLoadData
+          onTap: (() {
+            Navigator.pushNamed(context, Constant.pathListWordScreen, arguments: {
+              Constant.PARAM_LEVEL: levelBean.level
+            });
+          })
         )).toList(),
       ),
     );
   }
 
-  Future<void> _showLoadingPopupAndLoadData() async {
-    _showLoseDialog();
-    SaveManager saveManager = SaveManager();
-    final List<SaveDataBean> listSaveDataBean =  await saveManager.loadDataWithSaveFile();
-    Future.delayed(Duration(seconds: Constant.LOADING_SECOND), () {
-      Navigator.pop(context);
-      Navigator.pushNamed(context, Constant.pathListWordScreen, arguments: {
-        Constant.PARAM_KEY_LIST_DATA: listSaveDataBean
-      });
-    });
-  }
-
-  Future<void> _showLoseDialog() async {
-    return showDialog(
-      context: context,
-      barrierDismissible: true, // user must tap button!
-      builder: (BuildContext context) {
-        return Dialog(
-            backgroundColor: Colors.transparent,
-            child: Center(child: CircularProgressIndicator(),)
-        );
-      },
-    );
-  }
 }

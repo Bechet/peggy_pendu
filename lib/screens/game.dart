@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:peggy_pendu/beans/penduBean.dart';
 import 'package:peggy_pendu/utils/Constant.dart';
 import 'package:peggy_pendu/utils/PenduUtils.dart';
+import 'package:peggy_pendu/utils/managers/saveManager.dart';
 import 'package:peggy_pendu/utils/stringUtils.dart';
 import 'package:peggy_pendu/widgets/TextKey.dart';
 
@@ -110,11 +111,13 @@ class _GameState extends State<Game> {
     );
   }
 
-  void checkEnd() {
+  Future<void> checkEnd() async {
     if (StringUtils.replaceWordWithUnderscoreWithException(penduBean.frenchWord,
                 Constant.LIST_DEFAULT_WORD_EXCEPTION, listKey)
             .replaceAll(Constant.SPACE, "") ==
         penduBean.frenchWord.replaceAll(Constant.SPACE, "")) {
+      SaveManager saveManager = SaveManager();
+      await saveManager.updateSaveData(penduBean);
       _showWinDialog();
     } else if (this.chance == 0) {
       _showLoseDialog();

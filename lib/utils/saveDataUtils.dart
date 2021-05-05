@@ -9,6 +9,7 @@ class SaveDataUtils {
     sb.write(PenduUtils.convertBeanIntoCsvLine(saveDataBean.penduBean));
     sb.write(Constant.CVS_SPLITTER);
     sb.write(saveDataBean.clearTime);
+    print(sb.toString());
     return sb.toString();
   }
 

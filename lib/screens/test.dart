@@ -20,7 +20,7 @@ class _TestState extends State<Test> {
   @override
   initState() {
     super.initState();
-    saveManager = SaveManager(fileName: "Test.csv");
+    saveManager = SaveManager();
     listPenduBean = [
       new PenduBean(
           frenchWord: Constant.RANDOM,

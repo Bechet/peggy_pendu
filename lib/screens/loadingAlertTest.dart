@@ -36,13 +36,6 @@ class _LoadingAlertTestState extends State<LoadingAlertTest> {
     );
   }
 
-  // Future<void> _onButtonPressed() async {
-  //   print("Test");
-  //   CsvManager csvManager = CsvManager();
-  //   await csvManager.convertWordCsvFileAsListPenduBean();
-  //   print("Test");
-  // }
-
   Future<void> _onLoadButtonPressed() async {
     _showLoseDialog();
     SaveManager saveManager = SaveManager();

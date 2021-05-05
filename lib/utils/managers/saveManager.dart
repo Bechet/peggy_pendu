@@ -10,20 +10,18 @@ import 'package:peggy_pendu/utils/mappers/penduBeanMapper.dart';
 import '../Constant.dart';
 
 class SaveManager {
-  String fileName = "saveData.csv";
   List<SaveDataBean> listSaveDataBean;
 
-  SaveManager({this.fileName});
+  SaveManager();
 
   Future<String> get _localPath async {
     final directory = await getApplicationDocumentsDirectory();
-    print(directory);
     return directory.path;
   }
 
   Future<File> get _localFile async {
     final path = await _localPath;
-    return File('$path/' + fileName);
+    return File('$path/' + Constant.SAVE_FILE_NAME);
   }
 
   Future<List<SaveDataBean>> readSaveData() async {
@@ -50,21 +48,24 @@ class SaveManager {
     return file.writeAsString(sb.toString());
   }
 
-  Future<File> updateSaveData(SaveDataBean saveDataBeanToUpdate) async {
+  /// Increase clear time or save the cleared bean
+  Future<File> updateSaveData(PenduBean penduBean) async {
     bool found = false;
     if (listSaveDataBean == null || listSaveDataBean.isEmpty) {
       listSaveDataBean = await readSaveData();
     }
     for (SaveDataBean saveDataBean in listSaveDataBean) {
-      if (saveDataBean.penduBean.frenchWord == saveDataBeanToUpdate.penduBean.frenchWord) {
+      if (saveDataBean.penduBean.frenchWord == penduBean.frenchWord) {
         found = true;
-        saveDataBean.clearTime = saveDataBeanToUpdate.clearTime;
-        print("Updating clearTime");
+        // If we update the csv data file, we need to update the save data too
+        saveDataBean.penduBean = penduBean;
+        saveDataBean.clearTime += 1;
+        print("Updating clear time");
       }
     }
     if (!found) {
       print("Adding new line into saveFile");
-      listSaveDataBean.add(saveDataBeanToUpdate);
+      listSaveDataBean.add(SaveDataBean(penduBean: penduBean, clearTime: 1));
     }
     // Write the file
     return writeSaveData(listSaveDataBean);
@@ -111,4 +112,14 @@ class SaveManager {
     }
     return listSaveDataResult;
   }
+
+  Future<List<SaveDataBean>> loadDataWithSaveFileFilteredByLevel(final String level) async {
+    final List<SaveDataBean> listSaveDataBean = await loadDataWithSaveFile();
+    return listSaveDataBean.where((saveDataBean) => saveDataBean.penduBean.level == level).toList();
+  }
+
+  Future<void> resetSaveFile() {
+    return writeSaveData([]);
+  }
+
 }

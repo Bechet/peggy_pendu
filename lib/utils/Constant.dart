@@ -29,9 +29,12 @@ class Constant {
 
   static const PARAM_KEY_PENDU_BEAN = 'penduBean';
   static const PARAM_KEY_LIST_DATA = 'listData';
+  static const PARAM_LEVEL = 'level';
   static const int MAX_CHANCE = 6;
   static const int DEFAULT_CLEAR_TIME = 0;
   static const int LOADING_SECOND = 2;
 
   static const PATH_WORDS_CSV_FILE = 'assets/words.csv';
+
+  static const SAVE_FILE_NAME = 'saveFile.csv';
 }
