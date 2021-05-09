@@ -6,10 +6,14 @@ class TextKey extends StatelessWidget {
     @required this.text,
     this.onTextInput,
     this.flex = 1,
+    this.textColor,
+    this.containerColor
   }) : super(key: key);
   final String text;
   final ValueSetter<String> onTextInput;
   final int flex;
+  final Color textColor;
+  final Color containerColor;
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -22,7 +26,10 @@ class TextKey extends StatelessWidget {
               onTextInput?.call(text);
             },
             child: Container(
-              child: Center(child: Text(text)),
+              color: containerColor,
+              child: Center(child: Text(
+                  text)
+              ),
             ),
           ),
         ),

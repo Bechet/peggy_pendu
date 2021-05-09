@@ -7,6 +7,7 @@ import 'package:peggy_pendu/utils/PenduUtils.dart';
 import 'package:peggy_pendu/utils/managers/saveManager.dart';
 import 'package:peggy_pendu/utils/stringUtils.dart';
 import 'package:peggy_pendu/widgets/TextKey.dart';
+import 'package:peggy_pendu/widgets/keyboard.dart';
 
 class Game extends StatefulWidget {
   @override
@@ -17,11 +18,19 @@ class _GameState extends State<Game> {
   PenduBean penduBean;
   List<String> listKey = List.of(Constant.LIST_DEFAULT_CHARACTER_EXCEPTION);
   int chance = 6;
+  Keyboard _keyboard;
 
-  void _textInputHandler(String text) {
-    if (!listKey.contains(text)) {
+  @override
+  void initState() {
+    super.initState();
+    _keyboard = Keyboard(_textInputHandler);
+  }
+
+  void _textInputHandler(String key) {
+    if (!listKey.contains(key)) {
       setState(() {
-        listKey.add(text);
+        listKey.add(key);
+        _keyboard.updateListKey(key, StringUtils.calculateContains(penduBean.frenchWord, key));
         chance =
             PenduUtils.calculateRemainingChance(penduBean.frenchWord, listKey);
         checkEnd();
@@ -95,16 +104,10 @@ class _GameState extends State<Game> {
             ),
             // Keyboard
             Container(
-              height: 160,
-              color: Colors.blue,
-              child: Column(
-                // <-- Column
-                children: [
-                  buildRowOne(), // <-- Row
-                  buildRowTwo(), // <-- Row
-                ],
-              ),
-            )
+                height: 160,
+                color: Colors.blue,
+                child: _keyboard,
+            ),
           ],
         ),
       ),

@@ -9,7 +9,6 @@ class Constant {
   static const pathGameScreen='/game';
   static const pathTestScreen='/test';
   static const pathLoadingScreen='/loading';
-  static const pathLoadingTestScreen='/loadingTest';
 
   static const comingSoon="Coming Soon :)";
 

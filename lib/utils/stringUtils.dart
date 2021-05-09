@@ -19,6 +19,11 @@ class StringUtils {
     return resultString;
   }
 
+  /// word étadflkjz, key E returns true
+  static bool calculateContains(final String word, final String key) {
+    return word != null && key != null && uppercaseAndReplaceWithAlphabetical(word).contains(uppercaseAndReplaceWithAlphabetical(key));
+  }
+
   static String replaceWordWithUnderscoreWithException(String s,
       List<String> listWordException, List<String> listCharException) {
     if (listWordException.contains(s)) {

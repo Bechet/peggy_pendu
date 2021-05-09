@@ -53,13 +53,6 @@ class Home extends StatelessWidget {
                   Navigator.pushNamed(context, Constant.pathLoadingScreen);
                 }),
               ),
-            ),            Container(
-              child: MaterialButton(
-                child: Text("Loading Test"),
-                onPressed: (() {
-                  Navigator.pushNamed(context, Constant.pathLoadingTestScreen);
-                }),
-              ),
             ),
           ],
         ),
