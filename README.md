@@ -1,6 +1,6 @@
-# peggy_pendu
+# flutter_test_project
 
-Peggy pendu game
+A new Flutter project.
 
 ## Getting Started
 
