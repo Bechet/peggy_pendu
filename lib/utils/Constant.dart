@@ -1,4 +1,3 @@
-import 'package:peggy_pendu/beans/levelBean.dart';
 
 class Constant {
   static const pathListLevelScreen='/listLevel';

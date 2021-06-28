@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/Leo/AndroidStudioProjects/peggy_pendu/lib/utils/managers/csvManager.dart';
+import 'package:peggy_pendu/utils/managers/csvManager.dart';
 import 'package:peggy_pendu/beans/penduBean.dart';
 import 'package:peggy_pendu/beans/saveDataBean.dart';
 import 'package:peggy_pendu/utils/Constant.dart';
